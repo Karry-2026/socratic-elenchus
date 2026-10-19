@@ -8,7 +8,11 @@
 >
 > This is neither. It is the *elenchus* — the refutation by question and answer from Plato's early dialogues — run under rules that keep the examiner honest.
 
-**Version 1.0.0 · MIT**
+**Version 0.9.0 · MIT · public beta** — rules may still change until someone other than the author has run it.
+
+![demo](docs/demo.gif)
+
+*Synthetic demo: generated from a fixed script by `scripts/make_demo.py`, not a screen recording.*
 
 ## What a session actually feels like
 
@@ -56,6 +60,14 @@ Aporia is a deliverable, provided it has three parts: you say you do not know, t
 | Philosophy | the name | Vlastos, SEP/IEP citations, and the *problem of the Socratic elenchus* in `references/design-notes.md` |
 
 ## Install
+
+One line (recommended):
+
+```bash
+npx skills add Karry-2026/socratic-elenchus
+```
+
+It installs into `.agents/skills/socratic-elenchus/` and links it for Claude Code and other hosts. Manual install also works:
 
 The paths below are DSH's scanned skill roots. On another host, use that host's skills root instead — the skill body itself is host-agnostic.
 

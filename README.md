@@ -10,7 +10,11 @@
 >
 > 这个都不是。它跑的是 *elenchus*——柏拉图早期对话里的反诘法——并且给它套上了让提问者不能耍赖的规则。
 
-**版本 1.0.0 · MIT**
+**版本 0.9.0 · MIT · 公开测试版** — 在第一个不是作者的人跑出结果之前，规则仍可能变。
+
+![demo](docs/demo.gif)
+
+*合成演示：由 `scripts/make_demo.py` 按固定脚本生成，不是真实录屏。*
 
 ## 一次对话实际长什么样
 
@@ -55,6 +59,14 @@ aporia 是合格交付物，但要满足三个条件：你自己说出「我还�
 | 哲学 | 只借了个名字 | Vlastos、SEP/IEP 引文，以及 *the problem of the Socratic elenchus*（见 `references/design-notes.md`） |
 
 ## 安装
+
+一行装（推荐）：
+
+```bash
+npx skills add Karry-2026/socratic-elenchus
+```
+
+它会装进 `.agents/skills/socratic-elenchus/`，并自动链接给 Claude Code 等宿主。也可以手动拷贝：
 
 以下路径是 DSH 的扫描根。换宿主时，把目录换成该宿主对应的 skills 根即可——本 skill 的正文与宿主无关。
 

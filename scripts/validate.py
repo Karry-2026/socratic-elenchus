@@ -198,7 +198,7 @@ def check_repo(report: Report, root: Path) -> None:
     report.add("English README links back to the Chinese one", "README.md" in en_readme)
 
     changelog = (root / "CHANGELOG.md").read_text(encoding="utf-8") if (root / "CHANGELOG.md").exists() else ""
-    report.add("CHANGELOG has 1.0.0", "[1.0.0]" in changelog)
+    report.add("CHANGELOG has the current version", "[0.9.0]" in changelog)
 
 
 def check_links(report: Report, root: Path) -> None:

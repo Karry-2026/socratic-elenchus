@@ -58,7 +58,8 @@ A fourth issue was a portability bug, not a design one: `scripts/validate.py` re
 - **Manufactured consent has no dedicated scenario.** The new rule appears incidentally in S6 but was not tested against a deliberately leading question chain.
 - **No cross-host verification.** Only the host this was developed on has been tested; the flat-file installation form loses the `references/` directory.
 - **One external review, no external *use*.** The skill has still not been run by anyone who was not reviewing it.
-- **Distribution is unsolved.** Installation is a manual folder copy; there is no one-line install, no demo recording, and the version number (1.0.0) implies more maturity than one day of public existence supports.
+- **Distribution was unsolved, and is now only partly solved.** `npx skills add Karry-2026/socratic-elenchus` was tested and installs correctly into `.agents/skills/` with a Claude Code symlink; a synthetic demo GIF (`docs/demo.gif`) was added. What is still missing is a real user: nobody outside the author has run this in anger.
+- **The version was rolled back from 1.0.0 to 0.9.0** one day after publication. A first-day 1.0.0 is a promise the evidence did not support; the two entries are the same content, and `CHANGELOG.md` records the rollback.
 - **English text is a translation, not an original.** If the two diverge later, the Chinese file is the source of truth and `scripts/validate.py` only checks that they stay structurally aligned.
 
 ## Reproduce
