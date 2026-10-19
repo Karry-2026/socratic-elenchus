@@ -1,5 +1,7 @@
 # socratic-elenchus
 
+[![validate](https://github.com/Karry-2026/socratic-elenchus/actions/workflows/validate.yml/badge.svg)](https://github.com/Karry-2026/socratic-elenchus/actions/workflows/validate.yml)
+
 > 大多数「苏格拉底式」提示词，只是教会 AI 把每个问题都变成另一个问题。结果要么是一堵永远不回答的墙，要么是一个拿着标准答案给你打分的老师。
 >
 > 这个都不是。它跑的是 *elenchus*——柏拉图早期对话里的反诘法——并且给它套上了让提问者不能耍赖的规则。

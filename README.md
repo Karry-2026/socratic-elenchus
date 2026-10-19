@@ -1,5 +1,7 @@
 # socratic-elenchus
 
+[![validate](https://github.com/Karry-2026/socratic-elenchus/actions/workflows/validate.yml/badge.svg)](https://github.com/Karry-2026/socratic-elenchus/actions/workflows/validate.yml)
+
 > Most "Socratic" prompts teach a model to answer every question with another question. What you get is a wall that never answers, or a tutor grading you against an answer key.
 >
 > This is neither. It is the *elenchus* — the refutation by question and answer from Plato's early dialogues — run under rules that keep the examiner honest.
