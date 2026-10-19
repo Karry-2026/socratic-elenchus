@@ -1,34 +1,59 @@
 # socratic-elenchus
 
-A Socratic questioning skill for AI assistants: it does not hand you answers, it makes your own beliefs take shape.
+> Most "Socratic" prompts teach a model to answer every question with another question. What you get is a wall that never answers, or a tutor grading you against an answer key.
+>
+> This is neither. It is the *elenchus* — the refutation by question and answer from Plato's early dialogues — run under rules that keep the examiner honest.
 
-Version 1.0.0 · Works with DSH's local skill provider (`.agents/skills` or `.dsh/skills`); other hosts not yet verified.
+**Version 1.0.0** · Works with DSH's local skill provider (`.agents/skills` or `.dsh/skills`); other hosts not yet verified.
 
-## What it is
+## What a session actually feels like
 
-A skill (a set of instructions an AI assistant loads on demand) that runs the *elenchus* — the question-and-answer refutation practised in Plato's early dialogues — as a disciplined, five-step loop:
+```text
+You   I think good content is content people watch.
+It    So: a piece is good if and only if people watch it. Give me a criterion —
+      anyone hands me a piece, how do I use it to judge?
+You   High view count.
+It    Is there a case you yourself would call good, where the view count is low?
+You   … some of the well-argued ones do badly.
+It    So "low views" and "good" can hold together. Change the definition, or deny
+      the example?
+```
 
-**take the target claim → clarify the definition → test it with counterexamples → expose the contradiction → revise, or end in aporia.**
+```text
+It    (closing) This is my hypothesis: you are not after one definition but two
+      criteria that pull against each other — is that right? The chain: your
+      counterexample rules out "good = watched"; "valuable" collapses back into
+      "the audience finds it useful". Weakest link: "useful" is still undefined.
+      Open question: when the two criteria conflict, which one do you produce by?
+```
 
-It is not a personality you switch on. It is a procedure with hard rules: one question at a time, only the user's own beliefs are tested, the examiner never pronounces a verdict, and the user's own words are what get quoted back.
+No verdict is handed down. No question is dodged. The transcript above is one of four worked examples in the repo, in both Chinese and English.
 
-## What it does
+## Three things it will not do
 
-- Turns a vague judgement ("I think X is Y") into a claim that can be tested.
-- Forces abstract words down to a criterion you can apply to any case.
-- Exposes a contradiction as **one single conflict statement**, never as a verdict on which premise is false.
-- Accepts "a precisely stated open question" as a legitimate result. No conclusion is a valid outcome.
+**1. It will not answer for you — but "just tell me" wins instantly.**
+"Never answer" is the default, not a religion. Say the words and you get a direct answer, with the uncertainty flagged.
 
-## What it is not
+**2. It will not say "so you are wrong".**
+*Elenchus* can establish that a set of beliefs cannot all hold together. It cannot establish which one is false — that is a live dispute in the philosophical literature, and this skill takes the honest side of it. You judge; it only sets the conflict in front of you.
 
-- Not a tutor for questions with a correct answer (maths, code, exams) — just ask for the explanation.
-- Not therapy, legal, medical or investment advice. On crisis signals it stops questioning.
-- Not "argumentative questioning", and not a facilitator for group seminars.
-- Not "never answer". If you say "just tell me", it answers and flags the uncertainty.
+**3. It will not treat being stuck as failure.**
+Aporia is a deliverable, provided it has three parts: you say you do not know, the structure of the failure can be restated (which candidates are out, and why), and there is an exit. Confusion without those three is just confusion.
+
+## Why this one is different
+
+| | Typical "Socratic" prompt | socratic-elenchus |
+|---|---|---|
+| Never answering | hard rule, even when asked | default, with an explicit escape hatch |
+| Being stuck | a fault to fix with hints | a legitimate outcome, with conditions |
+| Verdicts | "so your definition is wrong" | "these cannot all hold together" — you judge |
+| Rules | one paragraph of vibes | 4 non-negotiable rules, 5 steps with done-conditions |
+| Evidence | "works great" | 57 structural checks + 5 scored scenarios (71/74) in the repo |
+| Philosophy | the name | Vlastos, SEP/IEP citations, and the *problem of the Socratic elenchus* in `references/design-notes.md` |
 
 ## Install
 
-Copy the folder so that `SKILL.md` sits in a scanned skills root, for example:
+Copy the folder into a scanned skills root:
 
 ```text
 <your-project>/.agents/skills/socratic-elenchus/SKILL.md
@@ -36,46 +61,59 @@ Copy the folder so that `SKILL.md` sits in a scanned skills root, for example:
 ~/.agents/skills/socratic-elenchus/SKILL.md
 ```
 
-Send the next message (or start a new session) and the skill appears in the catalogue.
+Send the next message (or start a new session) and it appears in the catalogue. `SKILL.md` is Chinese; `SKILL.en.md` is the English equivalent — copy it over `SKILL.md` if your host expects English.
 
-The flat-file form (`socratic-elenchus.md` at the top of a scanned root) is accepted by DSH's local skill provider, but it has no sibling `references/` directory, so the optional reference files are unavailable in that mode — prefer the folder form.
+The flat-file form (`socratic-elenchus.md`) also loads, but it has no sibling `references/`, so the optional files are unavailable. Prefer the folder.
 
 ## Use
 
 ```text
 Help me examine this: I think good content is content people watch.
-
 Use the Socratic method on me: our team should ship faster.
-
 This paragraph claims remote work kills culture — is that argued or just asserted?
 ```
 
 Or invoke it directly with `/socratic-elenchus`.
 
-## Layout
+## What's inside
 
 ```text
-SKILL.md                       the procedure, Chinese (the source of truth)
-SKILL.en.md                    the same procedure in English (interchangeable)
+SKILL.md                       the procedure, Chinese (source of truth)
+SKILL.en.md                    the same procedure in English
 references/design-notes.md     why the rules are what they are (elenchus, aporia, who judges)
-references/decision.md         optional tools: real-world constraints, substitution test, ordering
+references/decision.md         optional tools: constraints, substitution test, ordering
 references/question-types.md   nine question types — what to switch to when stuck
-examples/                      four worked transcripts (Chinese), with English copies under examples/en/
+examples/                      four worked transcripts (Chinese), English copies in examples/en/
 docs/design.md                 the design decisions, one layer above the rules
-docs/rubric.md                 the 10-dimension evaluation rubric
+docs/rubric.md                 10-dimension evaluation rubric
 docs/self-audit.md             what two review passes found, and what is still open
-scripts/validate.py            structural checks (frontmatter, links, one-question rule, parity)
-test/scenarios.md              five fixed behavioural scenarios
+scripts/validate.py            57 structural checks, runnable
+test/scenarios.md              five scripted behavioural scenarios
 test/RESULTS.md                the actual run: scores, evidence, findings
 ```
 
-`SKILL.md` and `SKILL.en.md` are equivalent. Use `SKILL.md` as-is for a Chinese-speaking user; if your host expects English instructions, copy `SKILL.en.md` over `SKILL.md`.
+Documentation language: README, `SKILL.en.md`, `examples/en/`, `docs/design.md` and `docs/self-audit.md` are English; `docs/rubric.md` and `test/` are Chinese, because the transcripts they score are Chinese.
 
-Documentation language: the README, `SKILL.en.md` and `examples/en/` are in English; the process documents (`docs/rubric.md`, `test/`) are in Chinese because the transcripts they score are Chinese. `docs/design.md` and `docs/self-audit.md` are in English.
+## Not for
+
+- Tutoring questions with a correct answer (maths, code, exams) — just ask for the explanation.
+- Therapy, legal, medical or investment advice. On crisis signals it stops questioning.
+- Facilitating group seminars; this is one-to-one.
+- People who want a character to role-play. This is a procedure, not a personality.
+
+## Check it yourself
+
+```bash
+python scripts/validate.py --root .
+```
+
+57 checks: frontmatter contract, kebab-case name, description triggers, reference resolution, one-question-per-turn in every example, no verdict phrasing, link integrity, bilingual parity. CI runs it on every push.
+
+Behavioural evidence is in `test/RESULTS.md`: five scenarios, 16 turns, scored 71/74 on a 10-dimension rubric — including the two places it slipped (paraphrase drift), which are recorded rather than hidden.
 
 ## Contributing
 
-Small fixes (typos, clearer wording) are welcome as PRs. Behavioural changes should open an issue first: every rule here is load-bearing, and relaxing one can turn the skill back into an interrogation. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Small fixes welcome as PRs. Behaviour changes: open an issue first — every rule in `SKILL.md` is load-bearing, and relaxing one turns the skill back into an interrogation. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
