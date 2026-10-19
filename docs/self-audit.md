@@ -52,4 +52,4 @@ All three were fixed: `examples/04-aporia.md` now demonstrates a real aporia, th
 python scripts/validate.py --root .
 ```
 
-44 structural checks. Behavioural runs: `test/scenarios.md`, scoring: `docs/rubric.md`.
+57 structural checks. Behavioural runs: `test/scenarios.md`, scoring: `docs/rubric.md`.

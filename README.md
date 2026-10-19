@@ -71,6 +71,8 @@ test/RESULTS.md                the actual run: scores, evidence, findings
 
 `SKILL.md` and `SKILL.en.md` are equivalent. Use `SKILL.md` as-is for a Chinese-speaking user; if your host expects English instructions, copy `SKILL.en.md` over `SKILL.md`.
 
+Documentation language: the README, `SKILL.en.md` and `examples/en/` are in English; the process documents (`docs/rubric.md`, `test/`) are in Chinese because the transcripts they score are Chinese. `docs/design.md` and `docs/self-audit.md` are in English.
+
 ## Contributing
 
 Small fixes (typos, clearer wording) are welcome as PRs. Behavioural changes should open an issue first: every rule here is load-bearing, and relaxing one can turn the skill back into an interrogation. See [CONTRIBUTING.md](CONTRIBUTING.md).
