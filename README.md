@@ -51,7 +51,7 @@ aporia 是合格交付物，但要满足三个条件：你自己说出「我还�
 | 卡住 | 需要修掉的故障，给提示 | 合法结果，但有条件 |
 | 判决 | 「所以你的定义错了」 | 「这些不能同时成立」——你判 |
 | 规则 | 一段感觉 | 4 条不可破的规则 + 5 步（每步有完成标志） |
-| 证据 | 「特别好用」 | 仓库里有 59 项结构校验 + 5 个场景实测（71/74） |
+| 证据 | 「特别好用」 | 仓库里有 59 项结构校验 + 6 个场景实测（旧版 5 个 71/74，修订后 S6 两次 18/18） |
 | 哲学 | 只借了个名字 | Vlastos、SEP/IEP 引文，以及 *the problem of the Socratic elenchus*（见 `references/design-notes.md`） |
 
 ## 安装
@@ -93,7 +93,7 @@ docs/design.md              设计决策，比规则高一层
 docs/rubric.md              10 维评测 rubric
 docs/self-audit.md          两轮审查发现了什么、还剩什么
 scripts/validate.py         59 项结构校验，可直接跑
-test/scenarios.md           五个固定行为场景
+test/scenarios.md           六个固定行为场景
 test/RESULTS.md             实跑结果：得分、证据、发现
 ```
 
@@ -114,7 +114,7 @@ python scripts/validate.py --root .
 
 59 项检查：frontmatter 契约、kebab-case 命名、description 触发词、引用闭环、每段示例的「一次一问」、禁用判决措辞、相对链接、中英对齐、中英 README 互链。CI 每次 push 都会跑。
 
-行为证据在 `test/RESULTS.md`：五个场景、16 个回合，按 10 维 rubric 得 71/74——包括两处失手（复述漂移），是记录下来的，不是藏起来的。
+行为证据在 `test/RESULTS.md`：六个场景、21 个回合，按 10 维 rubric 评分——包括两处失手（复述漂移）和它们的成因，是记录下来的，不是藏起来的。
 
 ## 参与
 

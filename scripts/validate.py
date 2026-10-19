@@ -84,7 +84,14 @@ def check_frontmatter(report: Report, root: Path) -> dict[str, str] | None:
 
     name = meta.get("name", "")
     report.add("name is kebab-case", bool(KEBAB.match(name)), name or "empty")
-    report.add("name matches directory", name == root.name, f"{name} vs {root.name}")
+    if (root / ".git").exists():
+        report.add("name matches directory", name == root.name, f"{name} vs {root.name}")
+    else:
+        report.add(
+            "name matches directory (skipped: not a git checkout)",
+            True,
+            f"{name} vs {root.name} — archives are named after the repo, not the skill",
+        )
     report.add("description present", bool(meta.get("description")), "")
     report.add("whenToUse present", bool(meta.get("whenToUse")), "")
 

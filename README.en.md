@@ -52,7 +52,7 @@ Aporia is a deliverable, provided it has three parts: you say you do not know, t
 | Being stuck | a fault to fix with hints | a legitimate outcome, with conditions |
 | Verdicts | "so your definition is wrong" | "these cannot all hold together" — you judge |
 | Rules | one paragraph of vibes | 4 non-negotiable rules, 5 steps with done-conditions |
-| Evidence | "works great" | 59 structural checks + 5 scored scenarios (71/74) in the repo |
+| Evidence | "works great" | 59 structural checks + 6 scored scenarios (71/74 on the pre-review text, 18/18 twice after) in the repo |
 | Philosophy | the name | Vlastos, SEP/IEP citations, and the *problem of the Socratic elenchus* in `references/design-notes.md` |
 
 ## Install
@@ -94,7 +94,7 @@ docs/design.md                 the design decisions, one layer above the rules
 docs/rubric.md                 10-dimension evaluation rubric
 docs/self-audit.md             what two review passes found, and what is still open
 scripts/validate.py            59 structural checks, runnable
-test/scenarios.md              five scripted behavioural scenarios
+test/scenarios.md              six scripted behavioural scenarios
 test/RESULTS.md                the actual run: scores, evidence, findings
 ```
 
@@ -115,7 +115,7 @@ python scripts/validate.py --root .
 
 59 checks: frontmatter contract, kebab-case name, description triggers, reference resolution, one-question-per-turn in every example, no verdict phrasing, link integrity, bilingual parity, README cross-links. CI runs it on every push.
 
-Behavioural evidence is in `test/RESULTS.md`: five scenarios, 16 turns, scored 71/74 on a 10-dimension rubric — including the two places it slipped (paraphrase drift), which are recorded rather than hidden.
+Behavioural evidence is in `test/RESULTS.md`: six scenarios, 21 turns, scored on a 10-dimension rubric — including the two places it slipped (paraphrase drift) and the reason they slipped, which are recorded rather than hidden.
 
 ## Contributing
 
