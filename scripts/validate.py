@@ -175,7 +175,7 @@ def check_examples(report: Report, root: Path) -> None:
 
 
 def check_repo(report: Report, root: Path) -> None:
-    files = ["README.md", "README.zh-CN.md", "LICENSE", "CHANGELOG.md", "CONTRIBUTING.md"]
+    files = ["README.md", "README.en.md", "LICENSE", "CHANGELOG.md", "CONTRIBUTING.md"]
     for name in files:
         report.add(f"{name} exists", (root / name).exists())
 
@@ -183,8 +183,12 @@ def check_repo(report: Report, root: Path) -> None:
     report.add("LICENSE has a real holder", "<YOUR NAME>" not in license_text and "Copyright (c)" in license_text)
 
     readme = (root / "README.md").read_text(encoding="utf-8") if (root / "README.md").exists() else ""
-    report.add("README states version", bool(re.search(r"Version \d+\.\d+\.\d+", readme)))
-    report.add("README has license section", "## License" in readme)
+    report.add("README states version", bool(re.search(r"(Version|版本)\s*\d+\.\d+\.\d+", readme)))
+    report.add("README has license section", "## License" in readme or "## 协议" in readme)
+    report.add("README links to the English README", "README.en.md" in readme)
+
+    en_readme = (root / "README.en.md").read_text(encoding="utf-8") if (root / "README.en.md").exists() else ""
+    report.add("English README links back to the Chinese one", "README.md" in en_readme)
 
     changelog = (root / "CHANGELOG.md").read_text(encoding="utf-8") if (root / "CHANGELOG.md").exists() else ""
     report.add("CHANGELOG has 1.0.0", "[1.0.0]" in changelog)
