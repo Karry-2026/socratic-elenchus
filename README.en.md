@@ -8,7 +8,7 @@
 >
 > This is neither. It is the *elenchus* — the refutation by question and answer from Plato's early dialogues — run under rules that keep the examiner honest.
 
-**Version 1.0.0** · Works with DSH's local skill provider (`.agents/skills` or `.dsh/skills`); other hosts not yet verified.
+**Version 1.0.0 · MIT**
 
 ## What a session actually feels like
 
@@ -52,10 +52,12 @@ Aporia is a deliverable, provided it has three parts: you say you do not know, t
 | Being stuck | a fault to fix with hints | a legitimate outcome, with conditions |
 | Verdicts | "so your definition is wrong" | "these cannot all hold together" — you judge |
 | Rules | one paragraph of vibes | 4 non-negotiable rules, 5 steps with done-conditions |
-| Evidence | "works great" | 57 structural checks + 5 scored scenarios (71/74) in the repo |
+| Evidence | "works great" | 59 structural checks + 5 scored scenarios (71/74) in the repo |
 | Philosophy | the name | Vlastos, SEP/IEP citations, and the *problem of the Socratic elenchus* in `references/design-notes.md` |
 
 ## Install
+
+The paths below are DSH's scanned skill roots. On another host, use that host's skills root instead — the skill body itself is host-agnostic.
 
 Copy the folder into a scanned skills root:
 
@@ -91,7 +93,7 @@ examples/                      four worked transcripts (Chinese), English copies
 docs/design.md                 the design decisions, one layer above the rules
 docs/rubric.md                 10-dimension evaluation rubric
 docs/self-audit.md             what two review passes found, and what is still open
-scripts/validate.py            57 structural checks, runnable
+scripts/validate.py            59 structural checks, runnable
 test/scenarios.md              five scripted behavioural scenarios
 test/RESULTS.md                the actual run: scores, evidence, findings
 ```
@@ -111,7 +113,7 @@ Documentation language: this file (`README.en.md`), `SKILL.en.md`, `examples/en/
 python scripts/validate.py --root .
 ```
 
-57 checks: frontmatter contract, kebab-case name, description triggers, reference resolution, one-question-per-turn in every example, no verdict phrasing, link integrity, bilingual parity. CI runs it on every push.
+59 checks: frontmatter contract, kebab-case name, description triggers, reference resolution, one-question-per-turn in every example, no verdict phrasing, link integrity, bilingual parity, README cross-links. CI runs it on every push.
 
 Behavioural evidence is in `test/RESULTS.md`: five scenarios, 16 turns, scored 71/74 on a 10-dimension rubric — including the two places it slipped (paraphrase drift), which are recorded rather than hidden.
 

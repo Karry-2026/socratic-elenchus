@@ -6,6 +6,8 @@
 
 - **README 首页改为中文**，英文版移到 `README.en.md`。两份 README 顶部互加语言切换，中文首页顶部给英文读者一行摘要与跳转。
 - `scripts/validate.py` 增加「中英 README 互链」检查（59 项）。
+- README 顶部只保留「版本 + 协议」；宿主兼容性说明移到「安装」段，并改写成使用指引（不再写「其他宿主尚未验证」）。
+- 同步 `README.md`、`README.en.md`、`docs/self-audit.md` 的校验数量为 59。
 
 ## [1.0.0] - 2026-10-20
 
